@@ -1,0 +1,21 @@
+<%unless comment.archived?%>
+  <p>
+    <strong>Commenter:</strong>
+    <%= comment.commenter %>
+  </p>
+
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.body %>
+  </p>
+
+
+<%= form_with(model: [comment.article, comment], method: :delete, local: true) do |form| %>
+  <%= form.hidden_field :_method, value: :delete %>
+  <%= form.submit "Destroy Comment", data: { confirm: "Are you sure?" }, class: "button" %>
+<% end %>
+
+
+
+  
+<%end%>
